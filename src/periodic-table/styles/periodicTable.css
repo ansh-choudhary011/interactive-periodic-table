@@ -1,0 +1,476 @@
+/* =======================
+   General body adjustments
+======================= */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0f1d2a;
+  color: #ffffffcf;
+  margin: 0;
+  padding: 0;
+}
+
+/* =======================
+   Search bar styling
+======================= */
+.search-bar {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.search-bar input {
+  width: 250px;
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+/* =======================
+   Periodic table grid
+======================= */
+.periodic-table {
+  display: grid;
+  grid-template-columns: repeat(18, 70px);
+  gap: 5px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Lanthanoids & Actinoids row */
+.lanthanoids-row,
+.actinoids-row {
+  display: flex;
+  align-items: center; /* vertical alignment */
+  gap: 5px;
+  justify-content: center;
+  margin-top: 15px;
+  flex-wrap: wrap; /* optional */
+}
+
+.series-container {
+  display: flex;
+  align-items: center; 
+  gap: 5px; 
+  flex-wrap: wrap;
+}
+
+.series-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+
+/* =======================
+   Element boxes
+======================= */
+.element {
+  position: relative;
+  border-radius: 6px;
+  padding: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: white;
+  font-weight: bold;
+}
+
+.element:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+.atomic-number {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.name {
+  font-size: 10px;
+}
+
+/* =======================
+   Tooltip styling
+======================= */
+.tooltip {
+  display: none;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 41, 59, 0.95);
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  pointer-events: none;
+  white-space: nowrap;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.element:hover .tooltip {
+  display: block;
+}
+
+/* =======================
+   Category Colors
+======================= */
+.alkali-metal { background: #ff7f50; }         /* Coral */
+.alkaline-earth-metal { background: #ffa500; } /* Orange */
+.transition-metal { background: #1e90ff; }     /* DodgerBlue */
+.post-transition-metal { background: #4682b4; } /* SteelBlue */
+.metalloid { background: #32cd32; }            /* LimeGreen */
+.nonmetal { background: #7cfc00; }             /* LawnGreen */
+.halogen { background: #ff69b4; }              /* HotPink */
+.noble-gas { background: #9370db; }            /* MediumPurple */
+.lanthanoid { background: #ff1493; }           /* DeepPink */
+.actinoid { background: #ff4500; }             /* OrangeRed */
+
+/* =======================
+   Electron config hover effect
+======================= */
+.electron-config {
+  margin-top: 5px;
+  font-size: 9px;
+  color: #f0f0f0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.element:hover .electron-config {
+  opacity: 1;
+}
+
+/* =======================
+   Modal styling (big card)
+======================= */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 25px;
+  width: 350px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+  color: #fff;
+  transition: transform 0.2s ease-out;
+}
+
+.modal-content .modal-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.modal-content .modal-header h2 {
+  margin: 5px 0;
+  font-size: 22px;
+  opacity: 0.8;
+}
+
+.modal-content .modal-header .category {
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #fbbf24;
+  margin-top: 4px;
+}
+
+.modal-content .modal-body {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.modal-content .modal-body p {
+  margin: px 0;
+  font-size: 14px;
+}
+
+/* Electron configuration visual */
+.electron-visual {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.orbital-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.orbital-label {
+  font-size: 12px;
+  min-width: 30px;
+}
+
+.electron-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+/* Close button */
+.close-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.close-btn:hover {
+  background-color: #1e40af;
+}
+
+/* =======================
+   Responsive adjustments
+======================= */
+@media (max-width: 768px) {
+  .periodic-table {
+    grid-template-columns: repeat(9, 60px);
+    gap: 5px;
+  }
+  .element {
+    padding: 4px;
+  }
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+  .electron-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.theme-toggle {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+/* =======================
+   Element Modal – Enhanced
+======================= */
+
+.modal-content {
+  width: 720px;
+  max-width: 95%;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 16px;
+  padding: 24px 28px;
+  text-align: left;
+  position: relative;
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 16px;
+}
+
+.symbol-box {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.symbol-box h1 {
+  font-size: 34px;
+  margin: 0;
+}
+
+.symbol-box span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.header-info h2 {
+  font-size: 26px;
+  margin: 0;
+}
+
+.header-info .category {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #fbbf24;
+  text-transform: capitalize;
+}
+
+/* =======================
+   Grid layout
+======================= */
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Left info section */
+.info-section p {
+  font-size: 14px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Right visual section */
+.visual-section {
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.electron-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.electron-config {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+/* Electron visual */
+.electron-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.orbital-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.orbital-label {
+  font-size: 13px;
+  min-width: 32px;
+  opacity: 0.8;
+}
+
+.electron-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.electron-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px currentColor;
+}
+
+/* =======================
+   Uses section
+======================= */
+.uses-section {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.uses-section h4 {
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.uses-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* =======================
+   Close button
+======================= */
+.close-btn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  font-size: 15px;
+}
+
+/* =======================
+   Category accent border
+======================= */
+.modal-content.alkali-metal { border: 2px solid #ff7f50; }
+.modal-content.alkaline-earth-metal { border: 2px solid #ffa500; }
+.modal-content.transition-metal { border: 2px solid #1e90ff; }
+.modal-content.post-transition-metal { border: 2px solid #4682b4; }
+.modal-content.metalloid { border: 2px solid #32cd32; }
+.modal-content.nonmetal { border: 2px solid #7cfc00; }
+.modal-content.halogen { border: 2px solid #ff69b4; }
+.modal-content.noble-gas { border: 2px solid #9370db; }
+.modal-content.lanthanoid { border: 2px solid #ff1493; }
+.modal-content.actinoid { border: 2px solid #ff4500; }
+
+/* =======================
+   Responsive modal
+======================= */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .symbol-box {
+    width: 70px;
+    height: 70px;
+  }
+}
